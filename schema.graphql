@@ -1,0 +1,90 @@
+type AccountState @entity {
+  id: ID!
+  account: Bytes!
+  token: Bytes!
+  supplied: BigInt!
+  borrowed: BigInt!
+}
+
+type Transaction @entity {
+  id: ID!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type Borrow @entity {
+  id: ID!
+  account: Bytes!
+  amount: BigInt!
+  accountBorrow: BigInt!
+  timestamp: BigInt!
+  transaction: Bytes!
+}
+
+type RepayBorrow @entity {
+  id: ID!
+  payer: Bytes!
+  borrower: Bytes!
+  amount: BigInt!
+  accountBorrow: BigInt!
+  timestamp: BigInt!
+  transaction: Bytes!
+}
+
+type Token @entity {
+  id: ID!
+  mintAmount: BigInt
+  underlyingAmount: BigInt
+  lTokenAmount: BigInt
+  # token symbol
+  symbol: String!
+  # token name
+  name: String!
+  # token decimals
+  decimals: BigInt!
+}
+
+type Transfer @entity {
+  id: ID!
+  from: Bytes!
+  to: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+  transaction: Bytes!
+}
+
+type EventLog @entity {
+  id: ID!
+  eventType: String!
+  account: Bytes
+  lToken: Bytes
+  amount: BigInt
+  premium: BigInt
+  timestamp: BigInt!
+  transaction: Bytes!
+}
+
+type LiquidateBorrow @entity {
+  id: ID!
+  liquidator: Bytes!
+  borrower: Bytes!
+  amount: BigInt!
+  lTokenCollateral: Bytes!
+  seizeAmount: BigInt!
+  timestamp: BigInt!
+  transaction: Bytes!
+  logIndex: BigInt!
+}
+
+type Market @entity {
+  # pool address
+  id: ID!
+  # creation
+  createdAtTimestamp: BigInt!
+  # block pool was created at
+  createdAtBlockNumber: BigInt!
+  # underlying token
+  underlying: Token!
+  # all time number of transactions
+  txCount: BigInt!
+}
