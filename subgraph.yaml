@@ -7,11 +7,11 @@ features:
 dataSources:
   - kind: ethereum/contract
     name: Layerbank
-    network: mode-mainnet
+    network: scroll
     source:
-      address: "0x80980869D90A737aff47aBA6FbaA923012C1FF50"
+      address: "0xEC53c830f4444a8A56455c6836b5D2aA794289Aa"
       abi: Core
-      startBlock: 4122806
+      startBlock: 152083
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.8
@@ -38,7 +38,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: LToken
-    network: mode-mainnet
+    network: scroll
     source:
       abi: LToken
     mapping:
