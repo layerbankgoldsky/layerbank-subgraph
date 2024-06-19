@@ -7,11 +7,11 @@ features:
 dataSources:
   - kind: ethereum/contract
     name: Layerbank
-    network: linea
+    network: mode-mainnet
     source:
-      address: "0x43Eac5BFEa14531B8DE0B334E123eA98325de866"
+      address: "0x80980869D90A737aff47aBA6FbaA923012C1FF50"
       abi: Core
-      startBlock: 2843237
+      startBlock: 4122806
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.8
@@ -38,7 +38,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: LToken
-    network: linea
+    network: mode-mainnet
     source:
       abi: LToken
     mapping:
@@ -53,7 +53,7 @@ templates:
         - EventLog
         - Borrow
         - RepayBorrow
-        - LiquidateBorrow
+        # - LiquidateBorrow
       abis:
         - name: LToken
           file: ./abis/LToken.json
@@ -70,5 +70,5 @@ templates:
           handler: handleBorrow
         - event: RepayBorrow(address,address,uint256,uint256)
           handler: handleRepayBorrow
-        - event: LiquidateBorrow(address,address,uint256,address,uint256)
-          handler: handleLiquidateBorrow
+        # - event: LiquidateBorrow(address,address,uint256,address,uint256)
+        #   handler: handleLiquidateBorrow
